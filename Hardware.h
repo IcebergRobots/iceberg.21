@@ -10,5 +10,5 @@ class Hardware {
         virtual void setEn(const bool& enabled);
         virtual const bool getEn();
     protected:
-        bool _enabled;
+        bool _enabled = true;
 };

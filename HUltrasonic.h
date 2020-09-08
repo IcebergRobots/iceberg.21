@@ -18,13 +18,13 @@ public:
     void update() override;
 
 
-    int getRight();
-    int getLeft();
-    int getBack();
-    int getFrontLeft();
-    int getFrontRight();
+    inline int getFrontLeft() { return _filteredDistance[0]; }
+    inline int getLeft() { return _filteredDistance[1]; }
+    inline int getBack() { return _filteredDistance[2]; }
+    inline int getRight() { return _filteredDistance[3]; }
+    inline int getFrontRight() { return _filteredDistance[4]; }
+    inline int getFront() { return min(getFrontLeft(), getFrontRight()); }
 
-    int getFront();
 
 private:
     void filter();

@@ -1,4 +1,4 @@
-#include "Ultrasonic.h"
+#include "HUltrasonic.h"
 
 void Ultrasonic::init()
 {
@@ -73,9 +73,4 @@ void Ultrasonic::filter()
     }
 }
 
-int Ultrasonic::getFrontLeft() { return _filteredDistance[0]; }
-int Ultrasonic::getLeft() { return _filteredDistance[1]; }
-int Ultrasonic::getBack() { return _filteredDistance[2]; }
-int Ultrasonic::getRight() { return _filteredDistance[3]; }
-int Ultrasonic::getFrontRight() { return _filteredDistance[4]; }
-int Ultrasonic::getFront() { return min(getFrontLeft(), getFrontRight()); }
+
