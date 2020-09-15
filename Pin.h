@@ -25,7 +25,7 @@
 
 // BallTouchpins:
 #define LED_PIN         47
-#define SENSOR_PIN      A15
+#define SENSOR_PIN      A15  
 
 // KickerPins
 #define KICKER          12

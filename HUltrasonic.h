@@ -9,7 +9,7 @@
 class Ultrasonic : public Hardware
 {
 public:
-    Ultrasonic(const bool& enabled = false)
+    Ultrasonic(bool enabled = false)
         {
             _enabled = enabled;
         };

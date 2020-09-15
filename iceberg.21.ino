@@ -3,11 +3,12 @@
 #include "HUltrasonic.h"
 #include "HMotor.h"
 #include "HChassis.h"
+#include "HBallTouch.h"
 
 #include "SStandby.h"
 #include "STest.h"
 
-
+BallTouch bt(ENDISABLE_BALLTOUCH);
 Ultrasonic us(ENDISABLE_ULTRASONIC);
 
 Motor motors[] = {
@@ -19,7 +20,7 @@ Motor motors[] = {
 Chassis chassis(motors, 4, ENDISABLE_CHASSIS);
 
 
-Hardware *hardwares[] = { &us , &chassis};
+Hardware *hardwares[] = { &us , &chassis, &bt};
 
 Player* state;
 Standby sStandby;
@@ -36,6 +37,8 @@ void setup()
         hardware->init();
 
     chassis.getMotor(0).setEn(false);
+
+    bt.calibrate();
 }
 
 void loop() 
@@ -43,10 +46,9 @@ void loop()
     for(Hardware* hardware : hardwares)
         hardware->update();
 
-    chassis.drive(0, 50);
     //state = state->update();
     //state->play();
-
+    bt.hasBall();
     LogUs("B: " + us.getBack() + "  R: " + us.getRight() + "  L: " + us.getLeft() + "  FL: " + us.getFrontLeft() + "  FR: " + us.getFrontRight());
 
 }

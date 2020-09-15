@@ -7,7 +7,7 @@ class Hardware {
         virtual void init() = 0;
         virtual void update() = 0;
 
-        virtual void setEn(const bool& enabled);
+        virtual void setEn(bool enabled);
         virtual const bool getEn();
     protected:
         bool _enabled = true;

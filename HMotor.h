@@ -10,10 +10,10 @@ public:
        : _fwd(fwd), _bwd(bwd), _pwm(pwm), _curSens(curSens), _power(0) {}
     void init() override;
     void update() override; //TODO Encodersignals
-    void setEn(const bool& enabled) override;
+    void setEn(bool enabled) override;
     
     void steerMotor();
-    void brake(const bool& active);
+    void brake(bool active);
     void setPower(int power);
 private:
     uint8_t _fwd;

@@ -8,19 +8,19 @@
 class Chassis : public Hardware
 {
 public:
-  Chassis(Motor* motors, const int motorCount = 4, const bool& enabled = false);
+  Chassis(Motor* motors, const int motorCount = 4, bool enabled = false);
 
   void init() override;
   void update() override; //TODO Encoder
 
-  void setEn(const bool& enabled) override;
+  void setEn(bool enabled) override;
 
   inline Motor& getMotor(int motorNumber) { return _motors[motorNumber]; }
 
   void calculate(int angle, int power, int rotation = 0);
   void drive();
   void drive(int angle, int power, int rotation = 0);
-  void brake(const bool& activ);
+  void brake(bool activ);
 
 private:
   int _motorCount = 0;

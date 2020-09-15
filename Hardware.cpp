@@ -1,6 +1,6 @@
 #include "Hardware.h"
 
-void Hardware::setEn(const bool& enabled)
+void Hardware::setEn(bool enabled)
 {
     _enabled = enabled;
 }

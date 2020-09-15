@@ -38,7 +38,7 @@ void Motor::steerMotor()
   }
 }
 
-void Motor::setEn(const bool& enabled)
+void Motor::setEn(bool enabled)
 {
   if(!enabled)
     brake(false);
@@ -51,7 +51,7 @@ void Motor::setEn(const bool& enabled)
   bremse aktiv oder passiv alle Motoren
   @param activ: aktives Bremsen?
 *****************************************************/
-void Motor::brake(const bool& activ)
+void Motor::brake(bool activ)
 {
   digitalWrite(_fwd, activ);
   digitalWrite(_bwd, activ);

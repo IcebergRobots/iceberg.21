@@ -7,20 +7,20 @@
 
 //En/Disabling hardware Components
 #define ENDISABLE_COMPASS       1
-#define ENDISABLE_CAMERA        1
+#define ENDISABLE_CAMERA        0
 #define ENDISABLE_CHASSIS       1
 #define ENDISABLE_BLUETOOTH     0
-#define ENDISABLE_ULTRASONIC    1
+#define ENDISABLE_ULTRASONIC    0
 #define ENDISABLE_KICK          0
-#define ENDISABLE_BALLTOUCH     0
-#define ENDISABLE_PUI           1
+#define ENDISABLE_BALLTOUCH     1
+#define ENDISABLE_PUI           0
 #define ENDISABLE_BOTTOM        0
 
 //Let the Robot Play
 #define PLAY                    0
 
 //Debugging
-#define DEBUG                   1
+#define DEBUG                   0
 
 #define DEBUG_PLAYER            1
 #define DEBUG_COMPASS           0
@@ -28,9 +28,9 @@
 #define DEBUG_CAMERA            0
 #define DEBUG_CHASSIS           0
 #define DEBUG_BLUETOOTH         0
-#define DEBUG_ULTRASONIC        1
+#define DEBUG_ULTRASONIC        0
 #define DEBUG_KICK              0
-#define DEBUG_BALLTOUCH         0
+#define DEBUG_BALLTOUCH         1
 #define DEBUG_BOTTOM            0
 #define DEBUG_DISPLAY           0
 #define DEBUG_PUI               0
