@@ -52,13 +52,13 @@ void loop()
     //state = state->update();
     //state->play();
     if(camera.seesBall())
-        chassis.drive(map(camera.getBPos(), 1, 310, -180, 180), 50);
+        chassis.drive(map(camera.getBPos(), 1, 315, 90, -90), 50);
     else
-        chassis.brake();
+        chassis.brake(true);
         
     if(bt.hasBall())
         kick.kick();
 
-    LogCam("Ballposition" + camera.getBPos());
+    LogCam("Ballposition " + camera.getBPos());
     LogUs("B: " + us.getBack() + "  R: " + us.getRight() + "  L: " + us.getLeft() + "  FL: " + us.getFrontLeft() + "  FR: " + us.getFrontRight());
 }
