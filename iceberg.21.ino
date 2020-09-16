@@ -4,10 +4,14 @@
 #include "HMotor.h"
 #include "HChassis.h"
 #include "HBallTouch.h"
+#include "HKick.h"
+#include "HCamera.h"
 
 #include "SStandby.h"
 #include "STest.h"
 
+Camera camera(ENDISABLE_CAMERA);
+Kick kick(ENDISABLE_KICK, 255);
 BallTouch bt(ENDISABLE_BALLTOUCH);
 Ultrasonic us(ENDISABLE_ULTRASONIC);
 
@@ -20,7 +24,7 @@ Motor motors[] = {
 Chassis chassis(motors, 4, ENDISABLE_CHASSIS);
 
 
-Hardware *hardwares[] = { &us , &chassis, &bt};
+Hardware *hardwares[] = { &us , &chassis, &bt, &kick, &camera };
 
 Player* state;
 Standby sStandby;
@@ -36,7 +40,6 @@ void setup()
     for(Hardware* hardware : hardwares)
         hardware->init();
 
-    chassis.getMotor(0).setEn(false);
 
     bt.calibrate();
 }
@@ -48,7 +51,14 @@ void loop()
 
     //state = state->update();
     //state->play();
-    bt.hasBall();
-    LogUs("B: " + us.getBack() + "  R: " + us.getRight() + "  L: " + us.getLeft() + "  FL: " + us.getFrontLeft() + "  FR: " + us.getFrontRight());
+    if(camera.seesBall())
+        chassis.drive(map(camera.getBPos(), 1, 310, -180, 180), 50);
+    else
+        chassis.brake();
+        
+    if(bt.hasBall())
+        kick.kick();
 
+    LogCam("Ballposition" + camera.getBPos());
+    LogUs("B: " + us.getBack() + "  R: " + us.getRight() + "  L: " + us.getLeft() + "  FL: " + us.getFrontLeft() + "  FR: " + us.getFrontRight());
 }

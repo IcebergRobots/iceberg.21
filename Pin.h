@@ -1,5 +1,22 @@
 #pragma once
-
+/*
+PIN_A0   (54)
+PIN_A1   (55)
+PIN_A2   (56)
+PIN_A3   (57)
+PIN_A4   (58)
+PIN_A5   (59)
+PIN_A6   (60)
+PIN_A7   (61)
+PIN_A8   (62)
+PIN_A9   (63)
+PIN_A10  (64)
+PIN_A11  (65)
+PIN_A12  (66)
+PIN_A13  (67)
+PIN_A14  (68)
+PIN_A15  (69)
+*/
 // Motorpins:
 #define FWD0            23
 #define BWD0            25
@@ -17,19 +34,19 @@
 #define BWD3            31
 #define PWM3            11
 
-#define M0_CURR         A1 //  Pin zum messen des Motorstroms von M1
-#define M1_CURR         A2 //  Pin zum messen des Motorstroms von M2
-#define M2_CURR         A3 //  Pin zum messen des Motorstroms von M3
-#define M3_CURR         A4 //  Pin zum messen des Motorstroms von M4
+#define M0_CURR         55 //  Pin zum messen des Motorstroms von M1
+#define M1_CURR         56 //  Pin zum messen des Motorstroms von M2
+#define M2_CURR         57 //  Pin zum messen des Motorstroms von M3
+#define M3_CURR         58 //  Pin zum messen des Motorstroms von M4
 
 
 // BallTouchpins:
-#define LED_PIN         47
-#define SENSOR_PIN      A15  
+#define BT_LED        47
+#define BT_SENSOR       69  //A15
 
 // KickerPins
 #define KICKER          12
-#define POTKICK         A0  //  hier ist das Potentiometer unten auf der Platine angeschlossen
+#define POTKICK         54  //  hier ist das Potentiometer unten auf der Platine angeschlossen
 
 //Tones
 #define BUZZER          13
@@ -38,7 +55,7 @@
 #define HEARTBEAT_LED   7
 
 //HARDWARE difference robots
-#define HARDWARE_DIFFERENCE A14
+#define HARDWARE_DIFFERENCE 68 //A14
 
 //Ultraadresses
 //addresses of the Ultrasonicsensors named by their position

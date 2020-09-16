@@ -2,9 +2,8 @@
 
 void Motor::init()
 {  
-  if (getEn())               //getEn() geht nicht wegen Gründen
+  if (_enabled)               
   {
-    Serial.println("Init motor");
     pinMode(_fwd, OUTPUT); // definiere Pins als Output
     pinMode(_bwd, OUTPUT);
     pinMode(_pwm, OUTPUT);
@@ -13,7 +12,7 @@ void Motor::init()
 
 void Motor::update()
 {
-  if (getEn())
+  if (_enabled)
   {
     /* code */
   }
@@ -23,7 +22,7 @@ void Motor::update()
 
 void Motor::steerMotor()
 {   
-  if (getEn())                     //getEn() geht nicht wegen Gründen
+  if (_enabled)                     
   {
     _power = min(255, _power); //Eingabekorrektur
     _power = max(-255, _power);

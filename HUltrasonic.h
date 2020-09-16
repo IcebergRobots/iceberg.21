@@ -18,12 +18,12 @@ public:
     void update() override;
 
 
-    inline int getFrontLeft() { return _filteredDistance[0]; }
-    inline int getLeft() { return _filteredDistance[1]; }
-    inline int getBack() { return _filteredDistance[2]; }
-    inline int getRight() { return _filteredDistance[3]; }
-    inline int getFrontRight() { return _filteredDistance[4]; }
-    inline int getFront() { return min(getFrontLeft(), getFrontRight()); }
+    inline int getFrontLeft() const { return _filteredDistance[0]; }
+    inline int getLeft() const { return _filteredDistance[1]; }
+    inline int getBack() const { return _filteredDistance[2]; }
+    inline int getRight() const { return _filteredDistance[3]; }
+    inline int getFrontRight() const { return _filteredDistance[4]; }
+    inline int getFront() const { return min(getFrontLeft(), getFrontRight()); }
 
 
 private:

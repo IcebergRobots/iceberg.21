@@ -18,11 +18,11 @@ void BallTouch::init()
     _calibrated = false;
     if(_threshold <= 0)
         _calibrated = false;
-    if(getEn())
+    if(_enabled)
     {
         LogBalltouch("enabled");
-        pinMode(LED_PIN, OUTPUT);
-        pinMode(SENSOR_PIN, INPUT_PULLUP);
+        pinMode(BT_LED, OUTPUT);
+        pinMode(BT_SENSOR, INPUT_PULLUP);
         LogBalltouch("Gets Threshold: " + _threshold);
         LogBalltouch("Intialized");
     } else 
@@ -41,13 +41,13 @@ const bool BallTouch::getCali()
 
 void BallTouch::calibrate()
 {
-    if(getEn())
+    if(_enabled)
     {
     calibrateNoBall();
 
     while (millis() - _onTimer < 2000)
-        digitalWrite(LED_PIN, HIGH);
-    digitalWrite(LED_PIN, LOW);
+        digitalWrite(BT_LED, HIGH);
+    digitalWrite(BT_LED, LOW);
 
     calibrateBall();
     calculateTreshold();
@@ -74,7 +74,7 @@ void BallTouch::calibrateNoBall()
             turnOn();
     }
     _thresholdNoBall = _summe / 20;
-    digitalWrite(LED_PIN, LOW);
+    digitalWrite(BT_LED, LOW);
     _state == LED_OFF;
 }
 
@@ -98,7 +98,7 @@ void BallTouch::calibrateBall()
             turnOn();
     }
     _thresholdBall = _summe / 20;
-    digitalWrite(LED_PIN, LOW);
+    digitalWrite(BT_LED, LOW);
     _state == LED_OFF;
 }
 
@@ -121,7 +121,7 @@ void BallTouch::calculateTreshold()
 
 void BallTouch::update()
 {
-    if (getEn())
+    if (_enabled)
     {
         if (_state == LED_ON && millis() - _onTimer > 10)
         {
@@ -134,13 +134,13 @@ void BallTouch::update()
             calculate();
         }
     }else
-        digitalWrite(LED_PIN, LOW);
+        digitalWrite(BT_LED, LOW);
     
 }
 
 bool BallTouch::hasBall()
 {
-    if(getEn())
+    if(_enabled)
     {
     LogBalltouch("Sees Ball: " + (_value > _threshold));    
     return _value > _threshold;
@@ -150,16 +150,16 @@ bool BallTouch::hasBall()
 
 void BallTouch::turnOn()
 {
-    _darkValue = analogRead(SENSOR_PIN);
-    digitalWrite(LED_PIN, HIGH);
+    _darkValue = analogRead(BT_SENSOR);
+    digitalWrite(BT_LED, HIGH);
     _onTimer = millis();
     _state = LED_ON;
 }
 
 void BallTouch::turnOff()
 {
-    _lightValue = analogRead(SENSOR_PIN);
-    digitalWrite(LED_PIN, LOW);
+    _lightValue = analogRead(BT_SENSOR);
+    digitalWrite(BT_LED, LOW);
     _offTimer = millis();
     _state = LED_OFF;
 }

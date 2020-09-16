@@ -12,7 +12,7 @@ Chassis::Chassis(Motor* motors, const int count, bool enabled)
 void Chassis::init()
 {
   setEn(_enabled);
-  if (getEn())
+  if (_enabled)
   {
     LogChassis("enabled");
     for (int i = 0; i < _motorCount; i++)
@@ -24,7 +24,7 @@ void Chassis::init()
 
 void Chassis::update()
 {
-  if (getEn())
+  if (_enabled)
   {
     for(int i = 0; i < _motorCount; i ++)
       _motors[i].update();
@@ -57,7 +57,7 @@ void Chassis::drive(int angle, int power, int rotation)
 *****************************************************/
 void Chassis::drive()
 {
-  if (getEn())
+  if (_enabled)
   {
     for (int i = 0; i < _motorCount; i++)
       _motors[i].steerMotor();

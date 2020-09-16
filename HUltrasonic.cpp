@@ -2,7 +2,7 @@
 
 void Ultrasonic::init()
 {
-    if (getEn())
+    if (_enabled)
     {
         Wire.beginTransmission((byte)0x00);   //broadcast
         LogUs("enabled");
@@ -16,7 +16,7 @@ void Ultrasonic::init()
 
 void Ultrasonic::update()
 {
-    if (getEn())
+    if (_enabled)
     {
         if (millis() - _lastMeasurement > 25 && !_fetched)
         {
