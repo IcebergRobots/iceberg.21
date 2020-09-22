@@ -10,6 +10,8 @@
 #include "SStandby.h"
 #include "STest.h"
 
+#include "Utility.h"
+
 Camera camera(ENDISABLE_CAMERA);
 Kick kick(ENDISABLE_KICK, 255);
 BallTouch bt(ENDISABLE_BALLTOUCH);
@@ -35,12 +37,15 @@ void setup()
     Serial.begin(9600);
     Wire.begin();
 
-    state = &sStandby;
-
     for(Hardware* hardware : hardwares)
         hardware->init();
 
+    getRobot();
+    startSound();
 
+    state = &sStandby;
+
+    LogUtility("Free Ram: " + getFreeSRAM());
     bt.calibrate();
 }
 
