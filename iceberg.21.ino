@@ -6,6 +6,7 @@
 #include "HBallTouch.h"
 #include "HKick.h"
 #include "HCamera.h"
+#include "HCompass.h"
 
 #include "SStandby.h"
 #include "STest.h"
@@ -16,6 +17,7 @@ Camera camera(ENDISABLE_CAMERA);
 Kick kick(ENDISABLE_KICK, 255);
 BallTouch bt(ENDISABLE_BALLTOUCH);
 Ultrasonic us(ENDISABLE_ULTRASONIC);
+Compass cmps;
 
 Motor motors[] = {
     Motor(FWD0, BWD0, PWM0, M0_CURR),
@@ -26,7 +28,7 @@ Motor motors[] = {
 Chassis chassis(motors, 4, ENDISABLE_CHASSIS);
 
 
-Hardware *hardwares[] = { &us , &chassis, &bt, &kick, &camera };
+Hardware *hardwares[] = { &us , &chassis, &bt, &kick, &camera, &cmps };
 
 Player* state;
 Standby sStandby;
@@ -40,8 +42,14 @@ void setup()
     for(Hardware* hardware : hardwares)
         hardware->init();
 
-    getRobot();
-    startSound();
+    //specifies RobotID and makes init sound
+    if(getRobot() == Robot::A)
+        startSoundA();
+    else if( getRobot() == Robot::B)
+        startSoundB();
+    else
+        LogUtility("Unknown device");
+    
 
     state = &sStandby;
 

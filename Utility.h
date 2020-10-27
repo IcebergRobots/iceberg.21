@@ -2,7 +2,8 @@
 
 #include "Config.h"
 
-void startSound();
+void startSoundA();
+void startSoundB();
 void reset();
 void heartbeat();
 uint16_t getFreeSRAM();

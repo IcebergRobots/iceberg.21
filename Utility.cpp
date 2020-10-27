@@ -1,16 +1,23 @@
 #include "Utility.h"
 
-void startSound()
+void startSoundA()
 {
   //Fiepen, welches Programstart signalisiert
 
   for (int i = 10; i < 2000; i += 10)
   {
-    if (robotID == Robot::A)
-      tone(BUZZER, i);
-    else
-      tone(BUZZER, 2010 - i);
+    tone(BUZZER, i);
+    delay(1);
+  }
+  noTone(BUZZER);
+}
 
+void startSoundB()
+{
+  //Fiepen, welches Programstart signalisiert
+  for (int i = 10; i < 2000; i += 10)
+  {
+    tone(BUZZER, 2010 - i);
     delay(1);
   }
   noTone(BUZZER);
@@ -43,10 +50,8 @@ void heartbeat()
   analogWrite(HEARTBEAT_LED, i > 255 ? i : 255 - i);
 }
 
-
-static bool initChooseRobot = true;
 static Robot robotID;
-
+static bool initChooseRobot = true;
 Robot getRobot()
 {
   if (initChooseRobot)
